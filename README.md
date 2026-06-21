@@ -17,7 +17,7 @@ Application de gestion d'événements composée d'une API ASP.NET Core (Clean Ar
 
 ```bash
 git clone <url-du-depot>
-cd examen-Renard-Stéphane
+cd examen-web-2026
 ```
 
 ### 2. Créer la base de données
