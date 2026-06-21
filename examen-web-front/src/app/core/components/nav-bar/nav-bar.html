@@ -1,0 +1,15 @@
+<nav>
+  <div class="nav-left">
+    <a routerLink="/">Home</a>
+    <a routerLink="/events">Events</a>
+  </div>
+
+  <div class="nav-right">
+    @if (isLoggedIn()) {
+      <button (click)="onLogOut()">Logout</button>
+    } @else {
+      <a routerLink="/auth/login">Login</a>
+      <a routerLink="/auth/register">Register</a>
+    }
+  </div>
+</nav>

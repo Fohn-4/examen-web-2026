@@ -46,6 +46,13 @@ cd examen-web-2026
 
    > **Linux** (si `auth_socket` toujours actif) : `sudo mysql event_management < sql/SQL_DATA.sql`
 
+> **Alternative avec DBeaver (GUI)** : si MySQL est installé mais que le client `mysql` en ligne de commande n'est pas pratique (ex: PopOS, ou préférence pour une interface graphique), les scripts peuvent être exécutés directement depuis DBeaver :
+> 1. Créer une nouvelle connexion MySQL dans DBeaver (host `localhost`, port `3306`, utilisateur/mot de passe selon votre installation).
+> 2. Ouvrir `sql/CREATE_DB.sql` dans DBeaver (`Fichier > Ouvrir un fichier` ou glisser-déposer dans l'éditeur SQL), puis exécuter le script complet avec **Alt+X** (ou clic droit > *Execute SQL Script*). Cela crée la base `event_management` et toutes les tables.
+> 3. Se connecter ensuite spécifiquement à la base `event_management` (rafraîchir la connexion ou naviguer dans l'arborescence à gauche), ouvrir `sql/SQL_DATA.sql` de la même façon et l'exécuter avec **Alt+X** pour charger les données de démonstration.
+>
+> ⚠️ Ne pas utiliser le bouton *Execute SQL Statement* (Ctrl+Enter) qui n'exécute qu'une seule requête à la fois — utiliser *Execute SQL Script* (Alt+X) pour exécuter tout le fichier d'un coup.
+
 ### 4. Configurer la chaîne de connexion (si besoin)
 
 La chaîne de connexion se trouve dans `examen-web-back/Api/appsettings.json` :

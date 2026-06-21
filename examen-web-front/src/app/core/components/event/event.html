@@ -1,0 +1,8 @@
+<div>count: {{ events().length }}</div>
+@for (event of events(); track event.uuid) {
+  <div class="event">
+    <h3>{{event.name}}</h3>
+    <span>Du {{event.startDate}} au {{event.endDate}}</span>
+    <div class="location">{{event.location}}</div>
+  </div>
+}

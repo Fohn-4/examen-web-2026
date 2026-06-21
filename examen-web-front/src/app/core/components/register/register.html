@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Email</label><input formControlName="email" type="email" />
+    <label>First Name</label><input formControlName="firstName" type="text" />
+    <label>Last Name</label><input formControlName="lastName" type="text" />
+    <label>Password</label><input formControlName="password" type="password">
+    <label>Confirm password</label><input formControlName="confirmPassword" type="password" />
+    @if (passwordMismatch()) {
+    <div class="error">Passwords do not match</div>
+    }
+    @if (errorMessage()) {
+    <p class="error">{{ errorMessage() }}</p>
+    }
+    <button type="submit" [disabled]="form.invalid">Register</button>
+</form>
