@@ -115,6 +115,76 @@ INSERT INTO event (
 	'Secrets of alchemy',
 	(SELECT UUID FROM app_user WHERE email = 'merlin@example.com'),
 	(SELECT UUID FROM app_user WHERE email = 'merlin@example.com')
+),
+(
+	'Falconry Festival',
+	'Winterfell',
+	'2025-07-10',
+	'2025-07-11',
+	TRUE,
+	'Display of birds of prey and falconry techniques',
+	(SELECT UUID FROM app_user WHERE email = 'jon.snow@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'jon.snow@example.com')
+),
+(
+	'Storytellers Gathering',
+	'Kaer Morhen',
+	'2025-08-20',
+	'2025-08-21',
+	TRUE,
+	'Night of legends and myths around the fire',
+	(SELECT UUID FROM app_user WHERE email = 'geralt@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'geralt@example.com')
+),
+(
+	'SuperAdmin Council',
+	'Middle-Earth',
+	'2025-09-01',
+	'2025-09-01',
+	FALSE,
+	'Private council meeting for camp leadership',
+	(SELECT UUID FROM app_user WHERE email = 'gandalf@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'gandalf@example.com')
+),
+(
+	'Blacksmith Guild Meeting',
+	'Gotham',
+	'2025-09-15',
+	'2025-09-15',
+	FALSE,
+	'Closed-door meeting for the blacksmith guild',
+	(SELECT UUID FROM app_user WHERE email = 'bruce.wayne@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'bruce.wayne@example.com')
+),
+(
+	'Cooks Tasting Session',
+	'London',
+	'2025-10-02',
+	'2025-10-02',
+	FALSE,
+	'Private tasting session for the camp cooks',
+	(SELECT UUID FROM app_user WHERE email = 'lara.croft@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'lara.croft@example.com')
+),
+(
+	'CampManager Planning Retreat',
+	'Princeton',
+	'2025-10-20',
+	'2025-10-22',
+	FALSE,
+	'Strategic planning retreat for camp managers',
+	(SELECT UUID FROM app_user WHERE email = 'tony.stark@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'tony.stark@example.com')
+),
+(
+	'Knights Private Debrief',
+	'Camelot',
+	'2025-11-05',
+	'2025-11-05',
+	FALSE,
+	'Closed debrief reserved for admins after the tournament',
+	(SELECT UUID FROM app_user WHERE email = 'arthur@example.com'),
+	(SELECT UUID FROM app_user WHERE email = 'arthur@example.com')
 );
 
 -- ------------------
