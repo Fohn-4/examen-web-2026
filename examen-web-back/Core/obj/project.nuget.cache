@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "PEPcxJatAvY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\renar\\code\\examen-web-back\\Core\\Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\renar\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512",
+    "C:\\Users\\renar\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.9\\microsoft.extensions.dependencyinjection.abstractions.10.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
