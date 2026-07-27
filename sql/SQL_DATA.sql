@@ -6,9 +6,9 @@ START TRANSACTION;
 INSERT INTO role (name) VALUES
 ('SuperAdmin'),
 ('Admin'),
-('Member'),
-('Cook'),
-('CampManager');
+('Effective'),
+('Associate'),
+('Member'); 
 
 -- ------------------
 -- USERS
@@ -32,39 +32,39 @@ INSERT INTO app_user (
 -- USER ↔ ROLE (many to many)
 -- ------------------
 
--- SuperAdmin
-INSERT INTO app_user_role (app_user_UUID, role_UUID)
-SELECT u.UUID, r.UUID
-FROM app_user u, role r
-WHERE u.email = 'gandalf@example.com'
-  AND r.name = 'SuperAdmin';
-
--- Admins
-INSERT INTO app_user_role (app_user_UUID, role_UUID)
-SELECT u.UUID, r.UUID
-FROM app_user u, role r
-WHERE u.email IN ('merlin@example.com', 'arthur@example.com')
-  AND r.name = 'Admin';
-
--- Base role for everyone
+-- Rôle de base pour tout inscrit
 INSERT INTO app_user_role (app_user_UUID, role_UUID)
 SELECT u.UUID, r.UUID
 FROM app_user u, role r
 WHERE r.name = 'Member';
 
--- Cooks
+-- Adhérents (lisibilité limitée)
 INSERT INTO app_user_role (app_user_UUID, role_UUID)
 SELECT u.UUID, r.UUID
 FROM app_user u, role r
-WHERE u.email IN ('lara.croft@example.com', 'bruce.wayne@example.com')
-  AND r.name = 'Cook';
+WHERE u.email IN ('lara.croft@example.com', 'geralt@example.com', 'jon.snow@example.com')
+  AND r.name = 'Associate';
 
--- Camp managers
+-- Membres effectifs (lisibilité complète). Les membres de l'OA le sont aussi.
 INSERT INTO app_user_role (app_user_UUID, role_UUID)
 SELECT u.UUID, r.UUID
 FROM app_user u, role r
-WHERE u.email IN ('tony.stark@example.com', 'indiana.jones@example.com')
-  AND r.name = 'CampManager';
+WHERE u.email IN ('gandalf@example.com', 'merlin@example.com', 'arthur@example.com', 'tony.stark@example.com', 'bruce.wayne@example.com')
+  AND r.name = 'Effective';
+
+-- OA (droits CRUD)
+INSERT INTO app_user_role (app_user_UUID, role_UUID)
+SELECT u.UUID, r.UUID
+FROM app_user u, role r
+WHERE u.email IN ('gandalf@example.com', 'merlin@example.com', 'arthur@example.com')
+  AND r.name = 'Admin';
+
+-- Président / backup (gère les rôles)
+INSERT INTO app_user_role (app_user_UUID, role_UUID)
+SELECT u.UUID, r.UUID
+FROM app_user u, role r
+WHERE u.email = 'gandalf@example.com'
+  AND r.name = 'SuperAdmin';
 
 -- ------------------
 -- ACTIVITIES

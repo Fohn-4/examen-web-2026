@@ -47,4 +47,5 @@ app.UseAuthorization();
 
 app.AddUserRoutes();
 app.AddEventRoutes();
+app.AddActivityRoutes();
 app.Run();

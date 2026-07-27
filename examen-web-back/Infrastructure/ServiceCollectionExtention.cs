@@ -14,6 +14,8 @@ public static class ServiceCollectionExtension
         services.AddTransient<IUserGateway, UserGateway>();
         services.AddTransient<IEventRepository, EventRepository>();
         services.AddTransient<IEventGateway, EventGateway>();
+        services.AddTransient<IActivityRepository, ActivityRepository>();
+        services.AddTransient<IActivityGateway, ActivityGateway>();
         return services;
     }
 }

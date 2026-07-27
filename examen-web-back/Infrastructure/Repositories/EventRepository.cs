@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Threading.Tasks;
 using Infrastructure.Repositories.Abstraction;
 using Microsoft.Extensions.Configuration;
 using Dapper;

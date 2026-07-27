@@ -1,4 +1,3 @@
-using Core.IGateways;
 using Core.UseCases;
 using Core.UseCases.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
@@ -11,6 +10,7 @@ public static class ServiceCollectionExtension
     {
         services.AddTransient<IUserUseCases, UserUseCases>();
         services.AddTransient<IEventUseCases, EventUseCases>();
+        services.AddTransient<IActivityUseCases, ActivityUseCases>();
         return services;
     }
 }

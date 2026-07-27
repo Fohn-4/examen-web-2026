@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Core.UseCases.Abstractions;
-using MySqlX.XDevAPI.Common;
 
 namespace Api.EndPoints
 {

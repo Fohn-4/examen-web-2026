@@ -93,16 +93,24 @@ Si le script `sql/SQL_DATA.sql` a été exécuté (étape 3 de l'installation), 
 
 | Email | Rôle(s) |
 |---|---|
-| gandalf@example.com | SuperAdmin, Member |
-| merlin@example.com | Admin, Member |
-| arthur@example.com | Admin, Member |
-| tony.stark@example.com | CampManager, Member |
-| bruce.wayne@example.com | Cook, Member |
-| lara.croft@example.com | Cook, Member |
-| geralt@example.com | Member |
-| jon.snow@example.com | Member |
+| gandalf@example.com | SuperAdmin, Admin, Effective, Member |
+| merlin@example.com | Admin, Effective, Member |
+| arthur@example.com | Admin, Effective, Member |
+| tony.stark@example.com | Effective, Member |
+| bruce.wayne@example.com | Effective, Member |
+| lara.croft@example.com | Associate, Member |
+| geralt@example.com | Associate, Member |
+| jon.snow@example.com | Associate, Member |
 | leia.organa@example.com | Member |
-| indiana.jones@example.com | CampManager, Member |
+| indiana.jones@example.com | Member |
+
+Rôles (du plus faible au plus élevé) :
+
+- **Member** — inscrit libre, aucun droit de plus qu'un visiteur.
+- **Associate** — membre adhérent, lisibilité limitée.
+- **Effective** — membre effectif, lisibilité complète (voit le contenu privé/inactif).
+- **Admin** — membre de l'OA, droits CRUD sur le contenu.
+- **SuperAdmin** — président/backup, gère les rôles des autres. Les rôles se cumulent.
 
 Se connecter via la page **Connexion** (`/auth/login`) avec l'un de ces emails et le mot de passe `hash1`.
 
@@ -112,6 +120,7 @@ Il est également possible de créer un nouveau compte via la page **Inscription
 
 - Inscription / connexion avec authentification JWT
 - Liste des événements (publics pour les visiteurs, publics + privés pour les utilisateurs authentifiés)
+- Liste des activités (actives pour tous, actives + inactives pour les rôles Effective / Admin / SuperAdmin)
 
 ## Architecture
 
