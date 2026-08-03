@@ -26,5 +26,19 @@ namespace Infrastructure.Gateways
                 Thumbnail = a.Thumbnail
             }).ToList();
         }
+
+        public async Task<Activity> Create(CreateActivityRequest request)
+        {
+            var entity = await _repository.Create(request);
+
+            return new Activity
+            {
+                UUID = entity.UUID,
+                Name = entity.Name,
+                Description = entity.Description,
+                IsActive = entity.IsActive,
+                Thumbnail = entity.Thumbnail
+            };
+        }
     }
 }

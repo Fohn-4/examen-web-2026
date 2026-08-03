@@ -1,4 +1,6 @@
+using Core.Models;
 using Core.UseCases.Abstractions;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Api.EndPoints
 {
@@ -19,6 +21,13 @@ namespace Api.EndPoints
 
                 return Results.Ok(activities);
             });
+
+            group.MapPost("/", async ([FromBody] CreateActivityRequest request, IActivityUseCases useCases) =>
+            {
+                var activity = await useCases.Create(request);
+                return Results.Created($"/api/activities/{activity.UUID}", activity);
+            })
+            .RequireAuthorization(policy => policy.RequireRole("Admin", "SuperAdmin"));
 
             return app;
         }

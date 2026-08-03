@@ -16,5 +16,10 @@ namespace Core.UseCases
         {
             return await _gateway.GetAll(includeInactive);
         }
+
+        public async Task<Activity> Create(CreateActivityRequest request)
+        {
+            return await _gateway.Create(request);
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Core.Models;
 using Dapper;
 using Infrastructure.Models;
 using Infrastructure.Repositories.Abstraction;
@@ -32,6 +33,33 @@ namespace Infrastructure.Repositories
             using var connection = new MySqlConnection(_connectionString);
             var result = await connection.QueryAsync<ActivityEntity>(sql, new { includeInactive });
             return result.ToList();
+        }
+
+        public async Task<ActivityEntity> Create(CreateActivityRequest request)
+        {
+            var uuid = Guid.NewGuid().ToString("N");
+
+            const string sql = @"
+            INSERT INTO activity (UUID, name, description, is_active)
+            VALUES (@uuid, @Name, @Description, @IsActive);
+            ";
+
+            using var connection = new MySqlConnection(_connectionString);
+            await connection.ExecuteAsync(sql, new
+            {
+                uuid,
+                request.Name,
+                request.Description,
+                request.IsActive
+            });
+
+            return new ActivityEntity {
+                UUID = uuid,
+                Name = request.Name,
+                Description = request.Description,
+                IsActive = request.IsActive,
+                Thumbnail = null
+            };
         }
     }
 }
