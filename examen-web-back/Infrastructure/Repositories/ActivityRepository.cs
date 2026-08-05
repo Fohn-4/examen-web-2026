@@ -71,5 +71,28 @@ namespace Infrastructure.Repositories
 
             await connection.ExecuteAsync(sql, new {uuid});
         }
+
+        public async Task<ActivityEntity> Update(string uuid, UpdateActivityRequest request)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            const string sql = @"
+            UPDATE activity
+            SET 
+                name = @Name,
+                description = @Description,
+                is_active = @IsActive
+            WHERE
+                UUID = @uuid
+            ";
+
+            await connection.ExecuteAsync(sql , new {uuid, request.Name, request.Description, request.IsActive});
+            return new ActivityEntity
+            {
+                UUID = uuid,
+                Name = request.Name,
+                Description = request.Description,
+                IsActive = request.IsActive
+            };
+        }
     }
 }

@@ -45,5 +45,18 @@ namespace Infrastructure.Gateways
         {
             await _repository.Delete(uuid);
         }
+
+        public async Task<Activity> Update(string uuid, UpdateActivityRequest request)
+        {
+            var entity = await _repository.Update(uuid, request);
+
+            return new Activity
+            {
+                UUID = uuid,
+                Name = entity.Name,
+                Description = entity.Description,
+                IsActive = entity.IsActive
+            };
+        }
     }
 }

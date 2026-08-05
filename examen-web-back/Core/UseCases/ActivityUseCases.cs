@@ -26,5 +26,10 @@ namespace Core.UseCases
         {
             await _gateway.Delete(uuid);
         }
+
+        public async Task<Activity> Update(string uuid, UpdateActivityRequest request)
+        {
+            return await _gateway.Update(uuid, request);
+        }
     }
 }

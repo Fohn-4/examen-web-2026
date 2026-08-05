@@ -36,7 +36,15 @@ namespace Api.EndPoints
             })
             .RequireAuthorization(policy => policy.RequireRole("Admin", "SuperAdmin"));
 
+            group.MapPut("/{uuid}", async (string uuid, [FromBody] UpdateActivityRequest request, IActivityUseCases useCases) =>
+            {
+                var activity = await useCases.Update(uuid, request);
+                return Results.Ok(activity);
+            })
+            .RequireAuthorization(policy => policy.RequireRole("Admin", "SuperAdmin"));
+
             return app;
         }
+
     }
 }
