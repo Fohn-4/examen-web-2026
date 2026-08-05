@@ -61,5 +61,15 @@ namespace Infrastructure.Repositories
                 Thumbnail = null
             };
         }
+
+        public async Task Delete(string uuid)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+            const string sql = @"
+            DELETE FROM activity WHERE UUID = @uuid;
+            ";
+
+            await connection.ExecuteAsync(sql, new {uuid});
+        }
     }
 }

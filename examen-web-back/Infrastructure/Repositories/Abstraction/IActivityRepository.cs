@@ -7,5 +7,6 @@ namespace Infrastructure.Repositories.Abstraction
     {
         Task<List<ActivityEntity>> GetAll(bool includeInactive);
         Task<ActivityEntity> Create(CreateActivityRequest request);
+        Task Delete(string uuid);
     }
 }

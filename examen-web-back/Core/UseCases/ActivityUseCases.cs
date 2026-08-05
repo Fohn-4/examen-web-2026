@@ -21,5 +21,10 @@ namespace Core.UseCases
         {
             return await _gateway.Create(request);
         }
+
+        public async Task Delete(string uuid)
+        {
+            await _gateway.Delete(uuid);
+        }
     }
 }

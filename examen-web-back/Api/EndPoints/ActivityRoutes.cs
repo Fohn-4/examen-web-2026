@@ -29,6 +29,13 @@ namespace Api.EndPoints
             })
             .RequireAuthorization(policy => policy.RequireRole("Admin", "SuperAdmin"));
 
+            group.MapDelete("/{uuid}", async (string uuid, IActivityUseCases useCases)=>
+            {
+                await useCases.Delete(uuid);
+                return Results.NoContent();
+            })
+            .RequireAuthorization(policy => policy.RequireRole("Admin", "SuperAdmin"));
+
             return app;
         }
     }
