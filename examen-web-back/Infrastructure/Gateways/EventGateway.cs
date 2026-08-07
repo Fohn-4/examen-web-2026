@@ -28,5 +28,10 @@ namespace Infrastructure.Gateways
                 Thumbnail = e.Thumbnail
             }).ToList();
         }
+
+        public async Task Delete(string uuid)
+        {
+            await _repository.Delete(uuid);
+        }
     }
 }

@@ -35,5 +35,17 @@ namespace Infrastructure.Repositories
             return result.ToList();
         }
 
+        public async Task Delete(string uuid)
+        {
+            using var connection = new MySqlConnection(_connectionString);
+
+            const string sql = @"
+            DELETE FROM event
+            WHERE UUID = @uuid;
+            ";
+
+            await connection.ExecuteAsync(sql, new {uuid});
+        }
+
     }
 }

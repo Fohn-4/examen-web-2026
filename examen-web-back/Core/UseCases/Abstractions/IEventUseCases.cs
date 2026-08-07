@@ -5,5 +5,6 @@ namespace Core.UseCases.Abstractions
     public interface IEventUseCases
     {
         Task<List<Event>> GetAll(bool includePrivate);
+        Task Delete(string uuid);
     }
 }

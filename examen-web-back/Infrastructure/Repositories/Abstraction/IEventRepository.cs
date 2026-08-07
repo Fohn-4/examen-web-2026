@@ -6,5 +6,6 @@ namespace Infrastructure.Repositories.Abstraction
     public interface IEventRepository
     {
         Task<List<EventEntity>> GetAll(bool includePrivate);
+        Task Delete(string uuid);
     }
 }
