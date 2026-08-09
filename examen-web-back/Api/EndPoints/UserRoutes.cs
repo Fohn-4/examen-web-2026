@@ -21,7 +21,7 @@ public static class UserRoutes
                 new Claim(ClaimTypes.NameIdentifier, user.UUID),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.FirstName),
-                ..user.Roles.Select(r => new Claim(ClaimTypes.Role, r))
+                ..user.Roles.Select(r => new Claim("roles", r))
             ],
             expires: DateTime.UtcNow.AddHours(1),
             signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature)
