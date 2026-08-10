@@ -39,4 +39,18 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
+  private getRoles(): string[]{
+    const token = localStorage.getItem('token');
+    if (!token) return [];
+
+    const data = JSON.parse(atob(token.split('.')[1]));
+    const roles = data.roles ?? [];
+    return Array.isArray(roles) ? roles : [roles];
+  }
+
+  isAdmin(): boolean {
+    const roles = this.getRoles();
+    return roles.includes('Admin') || roles.includes('SuperAdmin');
+  }
+
 }
