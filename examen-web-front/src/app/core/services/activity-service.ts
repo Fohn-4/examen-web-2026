@@ -24,4 +24,14 @@ export class ActivityService {
   load(): void {
     this.getAll().subscribe(data => this._activities.set(data));
   }
+
+  delete(uuid: string): void {
+    const token = localStorage.getItem('token');
+    const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : new HttpHeaders();
+    this.http.delete(`${this.apiUrl}/api/activities/${uuid}`, { headers })
+      .subscribe({
+        next: () => this.load(),
+        error: () => alert(`An error occured : delete failed`)
+      });
+  }
 }
