@@ -1,0 +1,6 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>name :</label><input type="text" formControlName="name" />
+    <label>description: </label><textarea formControlName="description"></textarea>
+    <label>is active: </label><input type="checkbox" formControlName="isActive">
+    <button type="submit" [disabled]="form.invalid">ok</button>
+</form>

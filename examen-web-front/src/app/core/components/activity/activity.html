@@ -1,7 +1,15 @@
+@if (isAdmin()){
+    <a routerLink="/activities/new">Add activity</a>
+}
 @for ( activity of activities(); track activity.uuid) {
     <div class="activity">
         <h3>{{activity.name}}</h3>
-        @if(isAdmin()){<span>active :  {{activity.isActive}}</span>}
         <div class="description">{{activity.description}}</div>
+        @if(isAdmin()){
+            <div class="adminInsert">
+                <span>active :  {{activity.isActive}}</span>
+                <button class="deleteButton" (click)="delete(activity.uuid)">delete</button>
+            </div>
+        }
     </div>
 }

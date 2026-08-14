@@ -2,11 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { ActivityService } from '../../services/activity-service';
 import { AuthService } from '../../services/auth-service';
 import { CommonModule } from '@angular/common';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-activity',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './activity.html',
   styleUrl: './activity.css',
 })
@@ -22,5 +22,9 @@ export class Activity implements OnInit {
 
   isAdmin(): boolean {
     return this.authService.isAdmin();
+  }
+
+  delete(uuid : string): void {
+    this.activityService.delete(uuid);
   }
 }

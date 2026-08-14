@@ -15,9 +15,13 @@ export class ActivityService {
   private _activities = signal<ActivityModel[]>([]);
   activities = this._activities.asReadonly();
 
-  getAll(): Observable<ActivityModel[]> {
+  private getAuthHeaders(): HttpHeaders {
     const token = localStorage.getItem('token');
-    const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : new HttpHeaders();
+    return token ? new HttpHeaders({ Authorization : `Bearer ${token}`}) : new HttpHeaders();
+  }
+
+  getAll(): Observable<ActivityModel[]> {
+    const headers = this.getAuthHeaders();
     return this.http.get<ActivityModel[]>(`${this.apiUrl}/api/activities`, { headers });
   }
 
@@ -26,12 +30,19 @@ export class ActivityService {
   }
 
   delete(uuid: string): void {
-    const token = localStorage.getItem('token');
-    const headers = token ? new HttpHeaders({ Authorization: `Bearer ${token}` }) : new HttpHeaders();
+    const headers = this.getAuthHeaders();
     this.http.delete(`${this.apiUrl}/api/activities/${uuid}`, { headers })
       .subscribe({
         next: () => this.load(),
         error: () => alert(`An error occured : delete failed`)
       });
+  }
+
+  create(name: string, description: string, isActive: boolean): void{
+    const headers = this.getAuthHeaders();
+    this.http.post( `${this.apiUrl}/api/activities` , { name, description, isActive }, {headers} ).subscribe({
+      next : () => this.load(),
+      error: () => alert("Error occured: failed to create")
+    });
   }
 }
