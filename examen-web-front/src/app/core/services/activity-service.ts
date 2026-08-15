@@ -45,4 +45,12 @@ export class ActivityService {
       error: () => alert("Error occured: failed to create")
     });
   }
+
+  update(uuid: string, name: string, description: string, isActive: boolean): void {
+    const headers = this.getAuthHeaders();
+    this.http.put(`${this.apiUrl}/api/activities/${uuid}`, {name, description, isActive}, {headers}).subscribe({
+      next: () => this.load(),
+      error: () => alert('Error occured: failed to update')
+    });
+  }
 }

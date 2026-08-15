@@ -9,6 +9,7 @@
             <div class="adminInsert">
                 <span>active :  {{activity.isActive}}</span>
                 <button class="deleteButton" (click)="delete(activity.uuid)">delete</button>
+                <a [routerLink]="['/activities', activity.uuid, 'edit']">edit</a>
             </div>
         }
     </div>

@@ -13,5 +13,6 @@ export const routes: Routes = [
     {path: 'auth/login', component: Login},
     {path: 'events', component: EventComponent},
     {path: 'activities', component: Activity},
-    {path: 'activities/new', component: ActivityForm}
+    {path: 'activities/new', component: ActivityForm},
+    {path: 'activities/:uuid/edit', component: ActivityForm}
 ];
