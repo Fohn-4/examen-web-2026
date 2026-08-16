@@ -29,7 +29,7 @@ export class Login {
         this.form.value.email!,
         this.form.value.password!
       ).subscribe({
-        next: () => this.router.navigate(['/events']),
+        next: () => this.router.navigate(['']),
         error:  () => this.errorMessage.set('Email ou mot de passe incorrect')
       })};
   }
