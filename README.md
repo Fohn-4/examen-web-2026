@@ -2,6 +2,18 @@
 
 Application de gestion d'événements composée d'une API ASP.NET Core (Clean Architecture + Dapper) et d'un frontend Angular.
 
+## Fonctionnalités
+
+L'application propose **cinq fonctionnalités distinctes** :
+
+1. **Authentification** — inscription et connexion via JWT. Les rôles sont portés par le token et déterminent les droits de l'utilisateur.
+2. **CRUD complet des activités** — création, consultation, modification et suppression (écriture réservée aux rôles Admin / SuperAdmin).
+3. **Gestion des événements** — consultation (contenu public pour les visiteurs, public + privé pour les utilisateurs authentifiés) et suppression (Admin / SuperAdmin).
+4. **Recherche d'activités** — filtrage de la liste en temps réel via une barre de recherche.
+5. **Thème clair / sombre** — bascule d'affichage (dark mode), gérée par un service Angular dédié.
+
+*Transversal :* autorisation par rôles — guards de routes côté Angular + `RequireRole` côté API — qui adapte l'accès et l'affichage selon le rôle.
+
 ## Prérequis
 
 | Outil | Version utilisée |
