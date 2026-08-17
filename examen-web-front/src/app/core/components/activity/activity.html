@@ -1,7 +1,11 @@
 @if (isAdmin()){
     <a routerLink="/activities/new">Add activity</a>
 }
-@for ( activity of activities(); track activity.uuid) {
+<div class="searchBar">
+    <input type="text" placeholder="Rechercher une activité..." (input)="searchTerm.set($any($event.target).value)" />
+</div>
+
+@for ( activity of filtredActivities(); track activity.uuid) {
     <div class="activity">
         <h3>{{activity.name}}</h3>
         <div class="description">{{activity.description}}</div>

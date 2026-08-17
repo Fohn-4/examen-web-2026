@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, computed, signal } from '@angular/core';
 import { ActivityService } from '../../services/activity-service';
 import { AuthService } from '../../services/auth-service';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,10 @@ export class Activity implements OnInit {
   private authService = inject(AuthService)
 
   activities = this.activityService.activities;
+
+  searchTerm = signal('');
+
+  filtredActivities = computed( () => this.activities().filter( a => a.name.toLowerCase().includes(this.searchTerm().toLowerCase()) ))
 
   ngOnInit(): void {
     this.activityService.load();
