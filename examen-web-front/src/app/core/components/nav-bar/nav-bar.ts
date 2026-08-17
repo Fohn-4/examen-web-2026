@@ -1,6 +1,7 @@
-import { Component, inject, Inject} from '@angular/core';
+import { Component, inject} from '@angular/core';
 import { AuthService } from '../../services/auth-service';
 import { RouterLink } from '@angular/router';
+import { DarkModeService } from '../../services/dark-mode-service';
 
 
 @Component({
@@ -11,6 +12,11 @@ import { RouterLink } from '@angular/router';
 })
 export class NavBar {
   private authService = inject(AuthService);
+  private darkModeService = inject(DarkModeService);
+
+  toggleTheme(): void {
+    this.darkModeService.toggle();
+  }
 
   isLoggedIn(): boolean {
     return this.authService.isLoggedIn();

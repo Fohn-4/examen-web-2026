@@ -29,4 +29,13 @@ export class EventService {
     this.getAll().subscribe(data => this._events.set(data));
   }
 
+  delete(uuid: string): void {
+    const headers = this.getAuthHeaders();
+    this.http.delete(`${this.apiUrl}/api/events/${uuid}`, {headers} )
+      .subscribe({
+        next: () => this.load(),
+        error: () => alert('Error occure : failed to delete')
+      });
+  }
+
 }
